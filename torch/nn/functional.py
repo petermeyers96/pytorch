@@ -3329,6 +3329,10 @@ def l1_loss(
             "Please ensure they have the same size.",
             stacklevel=2,
         )
+    if reduction=="sum":
+        raise RuntimeError(
+            f"Reduction mode cannot be sum."
+        )
     if size_average is not None or reduce is not None:
         reduction = _Reduction.legacy_get_string(size_average, reduce)
 
